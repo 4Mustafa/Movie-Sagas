@@ -22,3 +22,8 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+body{
+  background-color: rgba(34, 57, 184, 0.747);
+  color: rgb(244, 255, 183);
+}

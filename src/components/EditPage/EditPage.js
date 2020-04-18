@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 
 
 export class EditPage extends Component {
+    state = {
+
+    }
 
 
 
     render() {
         return (
             <div>
+                <input></input>
 
             </div>
         )

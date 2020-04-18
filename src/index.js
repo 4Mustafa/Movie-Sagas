@@ -16,11 +16,11 @@ import createSagaMiddleware from 'redux-saga';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovieSaga);
-
-
+    yield takeEvery('PUT_MOVIES', putMoviesSaga);
 }
+
 function* getMovieSaga(action) {
-    console.log('in getGifSaga', action.payload);
+    console.log('in getMovieSaga', action.payload);
     try {
         const response = yield axios.get('/api/movies');
         yield put({ type: 'SET_MOVIES', payload: response.data })
@@ -30,6 +30,16 @@ function* getMovieSaga(action) {
     }
 }
 
+
+function* putMoviesSaga(action) {
+    console.log('in puttMoviesSaga', action.payload);
+    try {
+        yield axios.put(`/api/movies/${action.payload.id}`, action.payload);
+    }
+    catch (error) {
+        console.log('Error with Favorite PUT', error);
+    }
+}
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -52,9 +62,11 @@ const genres = (state = [], action) => {
             return state;
     }
 }
-const selectedMovies = (state = [], action) => {
+const selectedMovies = (state = '', action) => {
     switch (action.type) {
         case 'SElECT_MOVIES':
+            console.log('in select movie', action.payload);
+
             return action.payload;
         default:
             return state;
@@ -66,7 +78,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        selectedMovies
+        selectedMovies,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

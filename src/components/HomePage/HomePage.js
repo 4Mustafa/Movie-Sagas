@@ -20,12 +20,14 @@ export class HomePage extends Component {
     render() {
         return (
             <div>
-                <h1>WELCOME HOME</h1>
+                <h1>SELECT A MOVIE</h1>
                 {this.props.movies.map(movie =>
                     <li onClick={this.handleClick}>
                         <img src={movie.poster} alt={movie.id} onClick={() => this.props.dispatch({ type: 'SElECT_MOVIES', payload: movie })} />
                     </li>
+
                 )}
+
             </div>
         )
     }
@@ -36,8 +38,13 @@ export class HomePage extends Component {
 
 const putPropsOnReduxStore = (reduxStore) => ({
     movies: reduxStore.movies,
+
 });
 
 
 
 export default withRouter(connect(putPropsOnReduxStore)(HomePage));
+
+
+
+

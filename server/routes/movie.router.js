@@ -15,5 +15,25 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         });
 });
+/* router.put('/:id', (req, res) => {
+    let movie = req.body;
+    let id = req.params.id;
+    console.log(treat);
+
+
+    let queryText = `UPDATE "movies" SET "title" = $1,"description"=$2 WHERE id = $3;`;
+
+    pool.query(queryText, [movie.title, movie.description, id])
+
+        .then(result => {
+            console.log('updated movie');
+            res.sendStatus(200);
+        })
+        .catch(error => {
+            console.log(`Error adding new movie`, error);
+            res.sendStatus(500);
+        });
+
+}); */
 
 module.exports = router;
