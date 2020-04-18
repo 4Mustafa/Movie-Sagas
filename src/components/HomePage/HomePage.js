@@ -12,15 +12,18 @@ export class HomePage extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'GET_MOVIES' });
     }
-
+    handleClick = (event) => {
+        console.log('in handleClick');
+        this.props.history.push('/DetailPage');
+    }
 
     render() {
         return (
             <div>
                 <h1>WELCOME HOME</h1>
                 {this.props.movies.map(movie =>
-                    <li>
-                        <img src={movie.poster} alt={movie.id} />
+                    <li onClick={this.handleClick}>
+                        <img src={movie.poster} alt={movie.id} onClick={() => this.props.dispatch({ type: 'SElECT_MOVIES', payload: movie })} />
                     </li>
                 )}
             </div>
