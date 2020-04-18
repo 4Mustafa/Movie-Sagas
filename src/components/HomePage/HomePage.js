@@ -20,7 +20,7 @@ export class HomePage extends Component {
                 <h1>WELCOME HOME</h1>
                 {this.props.movies.map(movie =>
                     <li>
-                        <img src={movie.poster} alt={movie.id} onClick={() => this.props.dispatch({ type: 'SElECT_MOVIES', payload: movie })} />
+                        <img src={movie.poster} alt={movie.id} />
                     </li>
                 )}
             </div>
