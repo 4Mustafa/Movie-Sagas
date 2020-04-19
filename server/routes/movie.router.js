@@ -4,8 +4,10 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    // return all categories
-    const queryText = `SELECT title, poster, description, name FROM movies JOIN genres ON movies.id = genres.id `;
+    /* Gets all movies from the database
+    and genres */
+    const queryText = `SELECT title, poster, description,
+ name FROM movies JOIN genres ON movies.id = genres.id `;
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
@@ -15,13 +17,15 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         });
 });
+/* req.body = new movie object */
 router.put('/', (req, res) => {
     let movie = req.body;
     let id = req.body.id
     console.log(req.body);
 
-
-    let queryText = `UPDATE "movies" SET "title" = $1, "description" = $2 WHERE id = $3;`;
+    /* sends updated information to the database  */
+    let queryText = `UPDATE "movies" SET "title" = $1,
+     "description" = $2 WHERE id = $3;`;
 
     pool.query(queryText, [movie.title, movie.description, id])
 

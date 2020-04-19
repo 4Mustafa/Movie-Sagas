@@ -5,9 +5,11 @@ import { withRouter } from 'react-router-dom';
 
 
 export class DetailPage extends Component {
+    /* sends user back a page */
     handleBack = () => {
         this.props.history.push('/')
     }
+    /* sends user to next page */
     handleEdit = () => {
         this.props.history.push('/EditPage')
     }
@@ -16,7 +18,8 @@ export class DetailPage extends Component {
         console.log('selected movies is', this.props.selectedMovies);
 
         return (
-            //maps through data to display details of selected movie 
+            //  goes into selected movie reduer to display details of selected movie (NO MAP NEEDED//
+
             <div className="Details">
                 <div>
                     <header>VIEW SELECTED MOVIE</header>
@@ -40,7 +43,7 @@ export class DetailPage extends Component {
     }
 }
 
-
+/* connects to the redux store so props is usable */
 const putPropsOnReduxStore = (reduxStore) => ({
     selectedMovies: reduxStore.selectedMovies
 });

@@ -11,7 +11,7 @@ export class EditPage extends Component {
             description: ''
         }
     }
-
+    /* keeps track of inputs and changes state to match inputs */
     handleChange = (propertyName, event) => {
         console.log(event.target.value);
 
@@ -21,12 +21,14 @@ export class EditPage extends Component {
 
         })
     }
+    /* runs a dispatch sending the saved state as a payload */
     handleSubmit = () => {
         console.log('new movie info  is ', this.state);
         this.props.dispatch({ type: 'PUT_MOVIES', payload: this.state.newMovie })
 
 
     }
+    /* sends user back a page */
     handleBack = () => {
         this.props.history.push('/DetailPage')
     }

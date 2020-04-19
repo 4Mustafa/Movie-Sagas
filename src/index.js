@@ -20,6 +20,7 @@ function* rootSaga() {
 }
 
 function* getMovieSaga(action) {
+    /* gets all movies from DB and sends it into a reducer */
     console.log('in getMovieSaga', action.payload);
     try {
         const response = yield axios.get('/api/movies');
@@ -33,6 +34,7 @@ function* getMovieSaga(action) {
 
 
 function* putMoviesSaga(action) {
+    /* gets selected movie and sends into a reducer */
     console.log('in puttMoviesSaga', action.payload);
     try {
         yield axios.put('/api/movies', action.payload);
@@ -66,6 +68,7 @@ const genres = (state = [], action) => {
             return state;
     }
 }
+/* used to store selected movie */
 const selectedMovies = (state = [], action) => {
     switch (action.type) {
         case 'SElECT_MOVIES':
