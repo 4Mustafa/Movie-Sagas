@@ -28,6 +28,7 @@ function* getMovieSaga(action) {
     catch (error) {
         console.log('Error with Search GET', error);
     }
+
 }
 
 
@@ -35,6 +36,9 @@ function* putMoviesSaga(action) {
     console.log('in puttMoviesSaga', action.payload);
     try {
         yield axios.put('/api/movies', action.payload);
+        yield put({ type: 'GET_MOVIES' });
+
+
     }
     catch (error) {
         console.log('Error with Favorite PUT', error);

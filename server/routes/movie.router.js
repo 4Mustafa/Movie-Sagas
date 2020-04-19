@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     // return all categories
-    const queryText = `SELECT * FROM movies ORDER BY title ASC`;
+    const queryText = `SELECT title, poster, description, name FROM movies JOIN genres ON movies.id = genres.id `;
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
@@ -15,13 +15,13 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         });
 });
-router.put('/:id', (req, res) => {
+router.put('/', (req, res) => {
     let movie = req.body;
-    let id = req.params.id;
+    let id = req.body.id
     console.log();
 
 
-    let queryText = `UPDATE "movies" SET "title" = $1,"description"=$2 WHERE id = $3;`;
+    let queryText = `UPDATE "movies" SET "title" = $1, "description" = $2 WHERE id = $3;`;
 
     pool.query(queryText, [movie.title, movie.description, id])
 
