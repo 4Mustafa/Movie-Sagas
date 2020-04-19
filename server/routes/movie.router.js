@@ -15,10 +15,10 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         });
 });
-/* router.put('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     let movie = req.body;
     let id = req.params.id;
-    console.log(treat);
+    console.log();
 
 
     let queryText = `UPDATE "movies" SET "title" = $1,"description"=$2 WHERE id = $3;`;
@@ -34,6 +34,6 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         });
 
-}); */
+});
 
 module.exports = router;

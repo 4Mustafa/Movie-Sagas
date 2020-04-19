@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //Connect to the redux store
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 
 export class EditPage extends Component {
@@ -19,24 +20,22 @@ export class EditPage extends Component {
     }
     handleSubmit = () => {
         console.log('new movie info  is ', this.state);
-        this.props.dispatch({ type: 'PUT_MOVIES', payload: { id: this.props.selectedMovies.id, newMovie: this.state } });
+        this.props.dispatch({ type: 'PUT_MOVIES', payload: { newMovie: this.state } });
         this.setState({
             newMovie: {
                 title: '',
                 description: ''
             }
         })
+
+    }
+    handleBack = () => {
+        this.props.history.push('/DetailPage')
     }
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input placeholder="title" type='text' value={this.state.title} onChange={(event) => this.handleChange('title', event)} />
-                    <input placeholder="description" type='text' value={this.state.description} onChange={(event) => this.handleChange('description', event)} />
 
-
-                    <button type='submit' value='update  movie'>UPDATE MOVIE</button>
-                </form>
             </div>
         )
     }
@@ -44,5 +43,8 @@ export class EditPage extends Component {
 
 
 
+const putPropsOnReduxStore = (reduxStore) => ({
+    selectedMovies: reduxStore.selectedMovies
+});
+export default withRouter(connect(putPropsOnReduxStore)(EditPage));
 
-export default connect()(EditPage);

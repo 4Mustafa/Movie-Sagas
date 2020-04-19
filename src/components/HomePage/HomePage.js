@@ -24,6 +24,7 @@ export class HomePage extends Component {
                 {this.props.movies.map(movie =>
                     <li onClick={this.handleClick}>
                         <img src={movie.poster} alt={movie.id} onClick={() => this.props.dispatch({ type: 'SElECT_MOVIES', payload: movie })} />
+                        {movie.title}
                     </li>
 
                 )}

@@ -13,33 +13,36 @@ export class DetailPage extends Component {
     }
 
     render() {
+        console.log('selected movies is', this.props.selectedMovies);
 
         return (
-            <div>
-                <h1>VIEW MOVIE</h1>
-                <>
+            //maps through data to display details of selected movie 
+            <div className="Details">
+                <div>
+                    <h1>VIEW MOVIE</h1>
+                    <>
+                        <img src={this.props.selectedMovies.poster} />
+                        {this.props.selectedMovies.description}
+                        <li>
+                            <button onClick={this.handleBack}>GO BACK</button>
+                        </li>
 
-                    {/* {this.props.selectedMovies.map(movie =>
-                        <li onClick={this.handleClick}>
-                            <img src={movie.poster} alt={movie.id} />
-                        </li>)} */}
-                    <li>
-                        <button onClick={this.handleBack}>GO BACK</button>
-                    </li>
-                    <li>
-                        <button onClick={this.handleEdit}>EDIT</button>
+                        <li>
+                            <button onClick={this.handleEdit}>EDIT</button>
 
-                    </li>
-                </>
+                        </li>
+                    </>
+
+                </div>
 
             </div>
-        )
+        );
     }
 }
 
 
 const putPropsOnReduxStore = (reduxStore) => ({
-    movies: reduxStore.selectedMovies,
+    selectedMovies: reduxStore.selectedMovies
 });
 
 

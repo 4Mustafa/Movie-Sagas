@@ -34,7 +34,7 @@ function* getMovieSaga(action) {
 function* putMoviesSaga(action) {
     console.log('in puttMoviesSaga', action.payload);
     try {
-        yield axios.put(`/api/movies/${action.payload.id}`, action.payload);
+        yield axios.put('/api/movies', action.payload);
     }
     catch (error) {
         console.log('Error with Favorite PUT', error);
@@ -62,7 +62,7 @@ const genres = (state = [], action) => {
             return state;
     }
 }
-const selectedMovies = (state = '', action) => {
+const selectedMovies = (state = [], action) => {
     switch (action.type) {
         case 'SElECT_MOVIES':
             console.log('in select movie', action.payload);
