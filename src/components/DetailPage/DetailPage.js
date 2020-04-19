@@ -18,15 +18,14 @@ export class DetailPage extends Component {
         return (
             //maps through data to display details of selected movie 
             <div className="Details">
-                <p>Details</p>
                 <div>
-                    <h1>VIEW MOVIE</h1>
+                    <header>VIEW SELECTED MOVIE</header>
                     <>
                         <h1><img src={this.props.selectedMovies.poster} /> </h1>
                         <h1>{this.props.selectedMovies.name} </h1>
                         <h1>{this.props.selectedMovies.description} </h1>
                         <h1>
-                            <button onClick={this.handleBack}>GO BACK</button>
+                            <button onClick={this.handleBack}> BACK</button>
                         </h1>
                         <h1>
                             <button onClick={this.handleEdit}>EDIT</button>

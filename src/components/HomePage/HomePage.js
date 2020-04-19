@@ -23,7 +23,7 @@ export class HomePage extends Component {
         return (
             <div>
 
-                <h1>SELECT A MOVIE</h1>
+                <header>SELECT A MOVIE</header>
                 {this.props.movies.map(movie =>
                     <>
                         <h1 onClick={this.handleClick}>

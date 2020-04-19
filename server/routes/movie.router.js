@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 router.put('/', (req, res) => {
     let movie = req.body;
     let id = req.body.id
-    console.log();
+    console.log(req.body);
 
 
     let queryText = `UPDATE "movies" SET "title" = $1, "description" = $2 WHERE id = $3;`;

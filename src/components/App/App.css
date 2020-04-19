@@ -24,6 +24,31 @@
 }
 
 body{
-  background-color: rgba(34, 57, 184, 0.747);
-  color: rgb(244, 255, 183);
+  background-color:rgb(75, 15, 15);
+    color: rgb(255, 255, 255);
+
+}
+h1 {
+  color: white;
+  text-shadow: 1px 2px px black, 0 0 25px blue, 0 0 5px darkblue;
+    font-size: 20px;
+
+}
+header{
+      color: rgb(255, 255, 255);
+
+  font-size: 46px;
+    text-shadow: 1px 1px 2px black, 0 0 25px rgb(0, 0, 0), 0 0 5px rgb(0, 0, 0);
+
+}
+
+button,
+input{
+    font-size: 20px;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color:darkblue; 
+  color: white;
 }

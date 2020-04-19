@@ -16,7 +16,7 @@ export class EditPage extends Component {
         console.log(event.target.value);
 
         this.setState({
-            ...this.state.newPlant,
+            ...this.state.newMovie,
             [propertyName]: event.target.value
 
         })
@@ -33,14 +33,14 @@ export class EditPage extends Component {
     render() {
         return (
             <div>
-                <img src={this.props.selectedMovies.poster} />
-                {this.props.selectedMovies.name}
-                {this.props.selectedMovies.description}
+                <header>EDIT MOVIE</header>
+                <h1>  <img src={this.props.selectedMovies.poster} /></h1>
+                <h1>  enter new title and description below </h1>
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="title" type='text' value={this.state.title} onChange={(event) => this.handleChange('title', event)} />
                     <input placeholder="description" type='text' value={this.state.description} onChange={(event) => this.handleChange('description', event)} />
-                    <button type='submit' value='update  movie'>UPDATE MOVIE</button>
-                    <button onClick={this.handleBack}>GO BACK</button>
+                    <button type='submit' value='update  movie'>EDIT MOVIE</button>
+                    <button onClick={this.handleBack}> BACK</button>
                 </form>
             </div>
         )
