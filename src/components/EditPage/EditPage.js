@@ -16,15 +16,14 @@ export class EditPage extends Component {
         console.log(event.target.value);
 
         this.setState({
-            ...this.state.newMovie,
-            [propertyName]: event.target.value
+            newMovie: { ...this.state.newMovie, [propertyName]: event.target.value }
 
         })
     }
     /* runs a dispatch sending the saved state as a payload */
     handleSubmit = () => {
         console.log('new movie info  is ', this.state);
-        this.props.dispatch({ type: 'PUT_MOVIES', payload: this.state.newMovie })
+        this.props.dispatch({ type: 'PUT_MOVIES', payload: { movieNew: this.state.newMovie } })
 
 
     }
@@ -37,6 +36,7 @@ export class EditPage extends Component {
             <div>
                 <header>EDIT MOVIE</header>
                 <h1>  <img src={this.props.selectedMovies.poster} /></h1>
+
                 <h1>  enter new title and description below </h1>
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="title" type='text' value={this.state.title} onChange={(event) => this.handleChange('title', event)} />
@@ -55,4 +55,3 @@ const putPropsOnReduxStore = (reduxStore) => ({
     selectedMovies: reduxStore.selectedMovies
 });
 export default withRouter(connect(putPropsOnReduxStore)(EditPage));
-

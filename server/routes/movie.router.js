@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     /* Gets all movies from the database
     and genres */
-    const queryText = `SELECT title, poster, description,
+    const queryText = `SELECT movies.id as id, title, poster, description,
  name FROM movies JOIN genres ON movies.id = genres.id `;
     pool.query(queryText)
         .then((result) => {
@@ -27,7 +27,7 @@ router.put('/', (req, res) => {
     let queryText = `UPDATE "movies" SET "title" = $1,
      "description" = $2 WHERE id = $3;`;
 
-    pool.query(queryText, [movie.title, movie.description, id])
+    pool.query(queryText, [movie.movieNew.title, movie.movieNew.description, id])
 
         .then(result => {
             console.log('updated movie');

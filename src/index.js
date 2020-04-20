@@ -21,7 +21,6 @@ function* rootSaga() {
 
 function* getMovieSaga(action) {
     /* gets all movies from DB and sends it into a reducer */
-    console.log('in getMovieSaga', action.payload);
     try {
         const response = yield axios.get('/api/movies');
         yield put({ type: 'SET_MOVIES', payload: response.data })
@@ -35,9 +34,9 @@ function* getMovieSaga(action) {
 
 function* putMoviesSaga(action) {
     /* gets selected movie and sends into a reducer */
-    console.log('in puttMoviesSaga', action.payload);
+    console.log('in puttMoviesSaga', action.payload, 'id is', action.payload.id);
     try {
-        yield axios.put('/api/movies', action.payload);
+        yield axios.put('/api/movies', { movieNew: action.payload.movieNew });
         yield put({ type: 'GET_MOVIES' });
 
 
